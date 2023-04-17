@@ -1,6 +1,6 @@
-/*A classe banco possui um método main, que inicia a execução do programa, e outros três métodos principais: cadastrarCliente, realizarLogin e atualizarCliente.
+/*A função banco possui um método main, que inicia a execução do programa, e outras três funções: cadastrarCliente, realizarLogin e atualizarCliente.
 
-O método "cadastrarCliente" permite cadastrar um novo cliente no sistema bancário. Ele solicita ao usuário que informe o nome, CPF, senha e celular do cliente. Se o número de clientes cadastrados ultrapassar o limite de 10,
+A função "cadastrarCliente" permite cadastrar um novo cliente no sistema bancário. Ele solicita ao usuário que informe o nome, CPF, senha e celular do cliente. Se o número de clientes cadastrados ultrapassar o limite de 10,
 o método exibe uma mensagem informando que o limite foi atingido. Caso contrário, os dados do novo cliente são armazenados em uma matriz clientes.
 
 O método "realizarLogin" permite que um cliente faça login no sistema. Ele solicita que o usuário informe seu CPF e senha, e verifica se há um cliente com esses dados cadastrado no sistema. Se houver, o método exibe o nome,
@@ -22,7 +22,6 @@ public class banco{
         System.out.println("\nCadastro de cliente");
         if (auxiliar >= clientes.length) {
             System.out.println("Limite de clientes atingido.");
-            return;
         }
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
@@ -55,7 +54,6 @@ public class banco{
                 System.out.println("Saldo: R$" + clientes[i][4]);
                 System.out.println("Celular: " + clientes[i][3]);
                 atualizarCliente(i);
-                return;
             }
         }
         System.out.println("CPF ou senha incorretos.");
