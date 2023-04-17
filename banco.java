@@ -49,7 +49,8 @@ public class banco{
         String senha = scanner.nextLine();
         
         for (int i = 0; i < auxiliar; i++) {
-            if (clientes[i][1].equals(cpf) && clientes[i][2].equals(senha)) {
+            if (clientes[i][1].equals(cpf) && clientes[i][2].equals(senha)){
+                System.out.print("------------");
                 System.out.println("Nome: " + clientes[i][0]);
                 System.out.println("Saldo: R$" + clientes[i][4]);
                 System.out.println("Celular: " + clientes[i][3]);
