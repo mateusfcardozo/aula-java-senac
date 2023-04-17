@@ -23,7 +23,7 @@ public class Banco{
     static int auxiliar = 0;
     
     public static void cadastrarCliente(){
-        System.out.println("\nCadastro de cliente");
+        System.out.println("Cadastro de cliente");
         if (auxiliar >= clientes.length) {
             System.out.println("Limite de clientes atingido.");
         }
@@ -46,7 +46,7 @@ public class Banco{
     }
     
     public static void realizarLogin(){
-        System.out.println("\nLogin");
+        System.out.println("Login");
         System.out.print("CPF: ");
         String cpf = scanner.nextLine();
         System.out.print("Senha: ");
@@ -66,7 +66,7 @@ public class Banco{
     
    public static void atualizarCliente(int auxiliarCliente){
         int opcao;
-        System.out.println("\nAtualizar dados");
+        System.out.println("Atualizar dados");
         System.out.println("1 - Nome");
         System.out.println("2 - Senha");
         System.out.println("3 - Celular");
@@ -132,7 +132,7 @@ public class Banco{
     public static void main(String[] args){
         int opcao;
         do {
-            System.out.println("\nbanco Turus");
+            System.out.println("banco Turus");
             System.out.println("Escolha uma das opções");
             System.out.println("1 - Cadastrar-se");
             System.out.println("2 - Fazer login");
