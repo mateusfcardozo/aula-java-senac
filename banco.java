@@ -59,7 +59,7 @@ public class banco{
         System.out.println("CPF ou senha incorretos.");
     }
     
-    public static void atualizarCliente(int indiceCliente){
+   public static void atualizarCliente(int auxiliarCliente){
         int opcao;
         System.out.println("\nAtualizar dados");
         System.out.println("1 - Nome");
@@ -74,37 +74,37 @@ public class banco{
         switch(opcao){
             case 1:
                 System.out.print("Novo nome: ");
-                clientes[indiceCliente][0] = scanner.nextLine();
+                clientes[auxiliarCliente][0] = scanner.nextLine();
                 System.out.println("Nome atualizado.");
-                atualizarCliente(indiceCliente);
+                atualizarCliente(auxiliarCliente);
                 break;
             case 2:
                 System.out.print("Insira a nova senha: ");
-                clientes[indiceCliente][2] = scanner.nextLine();
+                clientes[auxiliarCliente][2] = scanner.nextLine();
                 System.out.println("Senha atualizada.");
-                atualizarCliente(indiceCliente);
+                atualizarCliente(auxiliarCliente);
                 break;
             case 3:
                 System.out.print("Novo celular: ");
-                clientes[indiceCliente][3] = scanner.nextLine();
+                clientes[auxiliarCliente][3] = scanner.nextLine();
                 System.out.println("Celular atualizado.");
-                atualizarCliente(indiceCliente);
+                atualizarCliente(auxiliarCliente);
                 break;
             case 4:
                 System.out.print("Valor a adicionar: R$");
                 String valor = scanner.nextLine();
-                double saldoAnterior = Double.parseDouble(clientes[indiceCliente][4]);
+                double saldoAnterior = Double.parseDouble(clientes[auxiliarCliente][4]);
                 double novoSaldo = saldoAnterior + Double.parseDouble(valor);
-                clientes[indiceCliente][4] = String.format("%.2f", novoSaldo);
+                clientes[auxiliarCliente][4] = String.format("%.2f", novoSaldo);
                 System.out.println("Saldo atualizado.");
-                atualizarCliente(indiceCliente);
+                atualizarCliente(auxiliarCliente);
                 break;
             case 5:
                 System.out.println("Voltando...");
                 break;
             default:
                 System.out.println("Opção inválida.");
-                atualizarCliente(indiceCliente);
+                atualizarCliente(auxiliarCliente);
         }
     }
     
