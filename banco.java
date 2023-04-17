@@ -12,6 +12,7 @@ Cada opção chama um método específico que realiza a atualização correspond
 Em geral, o programa permite que novos clientes se cadastrem, que clientes existentes façam login e atualizem seus dados cadastrados, e que o saldo dos clientes seja atualizado.
 Ele armazena os dados dos clientes em uma matriz e utiliza a classe Scanner para receber entradas do usuário.
 */
+import java.util.Scanner;
 public class banco{
     static Scanner scanner = new Scanner(System.in);
     static String[][] clientes = new String[10][5]; 
