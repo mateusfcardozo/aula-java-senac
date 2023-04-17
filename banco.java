@@ -1,12 +1,12 @@
 /*A função banco possui um método main, que inicia a execução do programa, e outras três funções: cadastrarCliente, realizarLogin e atualizarCliente.
 
 A função "cadastrarCliente" permite cadastrar um novo cliente no sistema bancário. Ele solicita ao usuário que informe o nome, CPF, senha e celular do cliente. Se o número de clientes cadastrados ultrapassar o limite de 10,
-o método exibe uma mensagem informando que o limite foi atingido. Caso contrário, os dados do novo cliente são armazenados em uma matriz clientes.
+a função exibe uma mensagem informando que o limite foi atingido. Caso contrário, os dados do novo cliente são armazenados em uma matriz clientes.
 
-O método "realizarLogin" permite que um cliente faça login no sistema. Ele solicita que o usuário informe seu CPF e senha, e verifica se há um cliente com esses dados cadastrado no sistema. Se houver, o método exibe o nome,
-saldo e celular do cliente e chama o método atualizarCliente para permitir que o cliente atualize seus dados. Se não houver, o método exibe uma mensagem informando que o CPF ou a senha estão incorretos.
+A função "realizarLogin" permite que um cliente faça login no sistema. Ele solicita que o usuário informe seu CPF e senha, e verifica se há um cliente com esses dados cadastrado no sistema. Se houver, a função exibe o nome,
+saldo e celular do cliente e chama a função atualizarCliente para permitir que o cliente atualize seus dados. Se não houver, a função exibe uma mensagem informando que o CPF ou a senha estão incorretos.
 
-O método "atualizarCliente" permite que um cliente atualize seus dados cadastrados no sistema. Ele exibe um menu com as opções disponíveis: atualizar nome, atualizar senha, atualizar celular, adicionar saldo e voltar.
+A função "atualizarCliente" permite que um cliente atualize seus dados cadastrados no sistema. Ele exibe um menu com as opções disponíveis: atualizar nome, atualizar senha, atualizar celular, adicionar saldo e voltar.
 Cada opção chama um método específico que realiza a atualização correspondente. O método de adicionar saldo também atualiza o saldo do cliente na matriz clientes.
 
 Em geral, o programa permite que novos clientes se cadastrem, que clientes existentes façam login e atualizem seus dados cadastrados, e que o saldo dos clientes seja atualizado.
