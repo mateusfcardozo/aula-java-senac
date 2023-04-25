@@ -45,6 +45,7 @@ public class BancoTaurus {
         System.out.println("seu saldo e R$0,00" + saldo);
         conta[i] = new Conta(nome, cpf, senha, numero, celular, saldo);
         System.out.println("Cadastro realizado com sucesso!");
+        i++;
         return null;
     }
 
