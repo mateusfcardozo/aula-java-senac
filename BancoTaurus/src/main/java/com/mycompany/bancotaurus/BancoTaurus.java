@@ -1,176 +1,162 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+/*Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package com.mycompany.bancotaurus;
 
-/**
+/**  imcompleto
  *
  * @author mateus
- * 
- *                                Documentação do codigo
- * 
- * O código em questão é um programa básico de um sistema bancário, que permite que os usuários se cadastrem,
- * façam login e realizem algumas operações bancárias básicas.
- * 
- * Ao executar o programa, o usuário tem três opções: cadastrar-se, fazer login ou sair.
- * Ao escolher a opção de cadastrar-se, o usuário informa seus dados básicos (nome, CPF e celular) e define uma senha.
- * A partir disso, o sistema gera um código de acesso que será usado para fazer login posteriormente.
- * 
- * Ao escolher a opção de fazer login, o usuário informa seu número de conta e senha, e caso os dados estejam corretos,
- * é exibido um menu com quatro opções: atualizar dados, depositar dinheiro, sacar dinheiro ou sair. A partir dessas opções,
- * o usuário pode realizar algumas operações básicas em sua conta.
- * 
- * O programa utiliza a classe Conta para armazenar as informações de cada usuário.
- * A classe Conta possui atributos para nome, CPF, celular, número da conta, senha e saldo,
- * e métodos para realizar depósitos, saques e atualização de informações.
- * O programa armazena as contas em um array e as manipula de acordo com as operações selecionadas pelo usuário.
- * 
- *                                Code documentation
- * 
- * The code in question is a basic program of a banking system, which allows users to sign up, log in,
- * and perform some basic banking operations.
- * 
- * When running the program, the user has three options: sign up, log in, or exit.
- * When choosing the sign-up option, the user provides their basic information (name, CPF, and phone number)
- * and sets a password. From that, the system generates an access code that will be used to log in later.
- * 
- * When choosing the log-in option, the user provides their account number and password, and if the data is correct,
- * a menu with four options is displayed: update data, deposit money, withdraw money, or exit. From these options,
- * the user can perform some basic operations on their account.
- * 
- * The program uses the Account class to store the information of each user.
- * The Account class has attributes for name, CPF, phone number, account number, password, and balance,
- * and methods to perform deposits, withdrawals, and information updates.
- * The program stores the accounts in an array and manipulates them according to the operations selected by the user.
  */
+import java.util.Random;
 import java.util.Scanner;
 
 public class BancoTaurus {
-    static Scanner t = new Scanner(System.in);
-    static int i=0,j, count = 0;
-    static int[] senha = new int[10];
-    static float[] valor = new float[10];
-    static String[] conta = new String[10], nome = new String[10], cpf = new String[10], celular = new String[10];
 
-    public static void Cadastro() {
-        System.out.println("Central de Cadastro");
+    static Scanner t1 = new Scanner(System.in);
+    static Scanner t2 = new Scanner(System.in);
+    static Random random = new Random();
 
-        System.out.print("Nome: ");
-        nome[i] = t.next();
-        System.out.print("CPF: ");
-        cpf[i] = t.next();
-        System.out.print("Celular: ");
-        celular[i] = t.next();
-        System.out.println("Cliente cadastrado com sucesso.");
-        System.out.println("Seu código de acesso é: " + count);
-        System.out.print("Seu número da conta: ");
-        conta[i] = t.next();
-        System.out.print("Defina a sua senha para login (4 dígitos): ");
-        senha[i] = t.nextInt();
+    public static Conta Cadastro(Conta[] conta) {
+        int i = 0;
+        int numero = 0;
+        double saldo = 0;
+        System.out.println("Digite seu nome:");
+        String nome = t2.nextLine();
 
-        i++;
-        count++;
+        System.out.println("Digite seu cpf:");
+        String cpf = t2.nextLine();
+        while (cpf.length() != 11) {
+            System.out.println("CPF inválido!(deve conter 11 numeros) Digite novamente:");
+            cpf = t2.nextLine();
+        }
+
+        System.out.println("Digite seu celular:");
+        String celular = t2.nextLine();
+
+        String numeroc = Integer.toString(random.nextInt(1000000));
+        System.out.println("Seu número de conta é: " + numeroc);
+
+        System.out.println("Digite sua senha de 4 dígitos:");
+        String senha = t2.nextLine();
+        while (senha.length() != 4) {
+            System.out.println("Senha inválida! Digite novamente:");
+            senha = t2.nextLine();
+            numero = Integer.parseInt(numeroc);
+        }
+        System.out.println("seu saldo e R$0,00" + saldo);
+        conta[i] = new Conta(nome, cpf, senha, numero, celular, saldo);
+        System.out.println("Cadastro realizado com sucesso!");
+        return null;
     }
 
-    public static void Login() {
+    public static Conta Login(Conta[] conta) {
+        int i = 0;
+        System.out.println("Digite seu CPF ou seu nome:");
+        String cpfOuNome = t2.nextLine();
 
-        System.out.println("Central de Login");
-        System.out.print("Número da conta: ");
-        int numeroConta = t.nextInt();
-        System.out.print("Senha: ");
-        int senhaLogin = t.nextInt();
-
-         j = 0;
-        while (j < i) {
-            if (conta[j] != null && conta[j].equals(Integer.toString(numeroConta)) && senha[j] == senhaLogin) {
-                System.out.println("Bem-vindo(a), " + nome[j] + ".");
-                System.out.println("CPF: " + cpf[j]);
-                System.out.println("Celular: " + celular[j]);
-                System.out.println("Saldo: R$" + valor[j]);
-                int opcao;
-
+        while (i < conta.length && conta[i] != null) {
+            if (conta[i].getNome().equalsIgnoreCase(cpfOuNome) || conta[i].getCpf().equals(cpfOuNome)) {
+                System.out.println("Digite sua senha:");
+                String senha = t2.nextLine();
+                int tentativas = 0;
                 do {
-                    System.out.println("Escolha uma das opções:");
-                    System.out.println("1 - Atualizar seus dados");
-                    System.out.println("2 - Depositar dinheiro");
-                    System.out.println("3 - Sacar dinheiro");
-                    System.out.println("4 - Sair");
-                    System.out.print("Opção: ");
-                    opcao = t.nextInt();
+                    if (conta[i].getSenha().equals(senha)) {
+                        System.out.println("Login realizado com sucesso!");
+                        int opcao;
+                        do {
+                            System.out.println("Bem-vindo, " + conta[i].getNome() + "!");
+                            System.out.println("Escolha uma das opções:");
+                            System.out.println("1 - Visualizar dados da conta");
+                            System.out.println("2 - Adicionar saldo");
+                            System.out.println("3 - Retirar saldo");
+                            System.out.println("4 - Trocar número");
+                            System.out.println("5 - Voltar para o menu principal");
+                            System.out.print("Opção: ");
+                            opcao = t1.nextInt();
+                            switch (opcao) {
+                                case 1:
+                                    System.out.print("-------------------------");
+                                    System.out.println("Dados da conta:");
+                                    System.out.println("Número da conta: " + conta[i].getNumero());
+                                    System.out.println("Nome: " + conta[i].getNome());
+                                    System.out.println("CPF: " + conta[i].getCpf());
+                                    System.out.println("Celular: " + conta[i].getCelular());
+                                    System.out.print("-------------------------");
+                                    break;
 
-                    switch (opcao) {
-                        case 1:
-                            System.out.print("Celular: ");
-                            celular[j] = t.next();
+                                case 2:
+                                    System.out.println("Digite o valor a ser adicionado:");
+                                    double valorAdicionado = t2.nextDouble();
+                                    conta[i].maisSaldo(valorAdicionado);
+                                    System.out.println("Saldo atualizado: " + conta[i].getSaldo());
+                                    break;
 
-                            System.out.println("Dados atualizados com sucesso.");
-                            break;
+                                case 3:
+                                    System.out.println("Digite o valor a ser retirado:");
+                                    double valorRetirado = t2.nextDouble();
+                                    if (conta[i].getSaldo() < valorRetirado) {
+                                        System.out.println("Saldo insuficiente!");
+                                    } else {
+                                        conta[i].menosSaldo(valorRetirado);
+                                        System.out.println("Saldo atualizado: " + conta[i].getSaldo());
+                                    }
+                                    break;
 
-                        case 2:
-                            System.out.print("Valor a depositar: R$");
-                            float valorDeposito = t.nextFloat();
-                            valor[j] += valorDeposito;
-                            System.out.println("Depósito realizado com sucesso.");
-                            break;
+                                case 4:
+                                    System.out.println("Digite o novo número de celular:");
+                                    String celular = t2.nextLine();
+                                    conta[i].setCelular(celular);
+                                    System.out.println("Número de celular atualizado para: " + conta[i].getCelular());
+                                    break;
 
-                        case 3:
-                            System.out.print("Valor a sacar: R$");
-                            float valorSaque = t.nextFloat();
-                            if (valor[j] >= valorSaque) {
-                                valor[j] -= valorSaque;
-                                System.out.println("Saque realizado com sucesso.");
-                            } else {
-                                System.out.println("Saldo insuficiente para realizar o saque.");
+                                case 5:
+                                    System.out.println("Voltando para o menu principal...");
+                                    break;
+
+                                default:
+                                    System.out.println("Opção inválida.");
                             }
-                            break;
-
-                        case 4:
-                            System.out.println("Saindo...");
-                            break;
-
-                        default:
-                            System.out.println("Opção inválida.");
+                        } while (opcao != 5);
+                        return conta[i];
+                    } else {
+                        tentativas++;
+                        System.out.println("Senha incorreta! Tente novamente:");
+                        senha = t2.nextLine();
                     }
-                } while (opcao != 4);
-                break;
-            } else {
-                j++;
+                } while (tentativas < 3);
+
+                System.out.println("Você excedeu o número máximo de tentativas de login.");
+                return null;
             }
+            i++;
         }
 
-        if (j == i) {
-            System.out.println("Número da conta ou senha inválidos. Tente novamente.");
-        }
+        System.out.println("CPF ou nome inválido!");
+        return null;
     }
 
     public static void main(String[] args) {
-        int opcao;
-
-        do {
-            System.out.println("Escolha uma das opções:");
-            System.out.println("1 - Cadastrar novo cliente");
-            System.out.println("2 - Login");
-            System.out.println("3 - Sair");
+        Conta[] conta = new Conta[10];
+        int opcao = 0;
+        while (opcao != 3) {
+            System.out.println("O que você gostaria de fazer?");
+            System.out.println("1. Cadastrar-se");
+            System.out.println("2. Fazer login");
+            System.out.println("3. Sair");
             System.out.print("Opção: ");
-            opcao = t.nextInt();
-
+            opcao = t1.nextInt();
             switch (opcao) {
                 case 1:
-                    Cadastro();
+                    Cadastro(conta);
                     break;
-
                 case 2:
-                    Login();
+                    Login(conta);
                     break;
-
                 case 3:
-                    System.out.println("Saindo...");
+                    System.out.println("Obrigado por usar o nosso banco!");
                     break;
-
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println("Opção inválida!");
             }
-        } while (opcao != 3);
+        }
     }
 }
