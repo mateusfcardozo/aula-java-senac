@@ -32,7 +32,7 @@ O loop continua até que o usuário escolha sair do programa.
 Este código utiliza um método simples de criptografia, deslocando cada caractere da string de senha em uma posição na tabela ASCII. Veja como funciona:
 1- A string de senha é primeiro convertida em um array de caracteres usando o método toCharArray().
 2-Um loop itera através de cada caractere no array.
-3-Cada caractere é deslocado em uma posição na tabela ASCII, adicionando 1 ao seu valor inteiro usando a expressão (char) (chars[i] + 1).
+3-Cada caractere é deslocado em uma posição, adicionando 1 ao seu valor inteiro usando a expressão (char) (chars[i] + 1).
 4-Os caracteres criptografados são armazenados de volta no mesmo array.
 5-Por fim, o array de caracteres criptografados é convertido de volta em uma string.
 
@@ -64,7 +64,7 @@ The loop continues until the user chooses to exit the program.
 This code uses a simple encryption method by shifting each character in the password string by one in the ASCII table. Here is how it works:
 1-The password string is first converted into a character array using the toCharArray() method.
 2-A loop iterates through each character in the array.
-3-Each character is shifted by one in the ASCII table by adding 1 to its integer value using the (char) (chars[i] + 1) expression.
+3-Each character is shifted by one position by adding 1 to its integer value using the (char) expression (chars[i] + 1).
 4-The encrypted characters are stored back in the same array.
 5-Finally, the encrypted character array is converted.
  */
